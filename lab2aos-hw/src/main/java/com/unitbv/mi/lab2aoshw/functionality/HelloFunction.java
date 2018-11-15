@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest/docker/hello")
+@RequestMapping("/helloFunction")
 public class HelloFunction {
 
     @GetMapping

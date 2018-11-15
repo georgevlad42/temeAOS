@@ -1,8 +1,24 @@
 version: '2.3'
 services:
-  web:
+  lab2aos:
+    image: "lab2aos-hw"
     build: .
     ports:
-      - "8085:8085"
-  lab2aos-hw:
-    image: "lab2aos-hw"
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=dockerUser
+      - DATABASE_PASSWORD=dockerPassword
+      - DATABASE_NAME=lab2db
+      - DATABASE_PORT=3306
+  db:
+    image: "mysql:latest"
+    environment:
+      - MYSQL_ROOT_PASSWORD=MySQL4298-=
+      - MYSQL_DATABASE=lab2db
+      - MYSQL_USER=dockerUser
+      - MYSQL_PASSWORD=dockerPassword
+    ports:
+      - 3306:3306
